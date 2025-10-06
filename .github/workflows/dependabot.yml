@@ -5,7 +5,6 @@ on:
     workflows: ["Run Tests"]
     types:
       - completed
-
 jobs:
   dependabot:
     name: Auto-merge Dependabot PRs
@@ -23,11 +22,11 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       PR_URL: ${{ github.event.workflow_run.pull_requests[0].html_url }}
     steps:
-      - name: Fetch Dependabot Metadata
+      - name: Dependabot metadata
+        id: dependabot-metadata
         uses: dependabot/fetch-metadata@v2
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-      - name: Approve the PR
-        run: gh pr review --approve "$PR_URL"
-      - name: Merge the PR
-        run: gh pr merge --squash --auto "$PR_URL"
+      - name: Approve and Merge the PR
+        if: ${{ steps.dependabot-metadata.outputs.dependency-group == 'app-dependencies' }}
+        run: |
+          gh pr review --approve "$PR_URL"
+          gh pr merge --squash --auto "$PR_URL"
