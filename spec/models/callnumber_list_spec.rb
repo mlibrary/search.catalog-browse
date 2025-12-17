@@ -41,12 +41,10 @@ describe CallNumberList do
 end
 describe CallNumberList::Error do
   before(:each) do
-    @params = {
-      original_reference: "OSU"
-    }
+    @param = "INVALID QUERY"
   end
   subject do
-    described_class.new(**@params)
+    described_class.new(@param)
   end
   context "#error?" do
     it "returns true" do
@@ -55,7 +53,7 @@ describe CallNumberList::Error do
   end
   context "#error_message" do
     it "returns an error message" do
-      expect(subject.error_message).to eq("<span class=\"strong\">{:original_reference=>\"OSU\"}</span> is not a valid call number query. Please try a using a valid Library of Congress call number (enter one or two letters and a number) or valid Dewey call number (start with three numbers).")
+      expect(subject.error_message).to eq("<span class=\"strong\">INVALID QUERY</span> is not a valid call number query. Please try a using a valid Library of Congress call number (enter one or two letters and a number) or valid Dewey call number (start with three numbers).")
     end
   end
 end

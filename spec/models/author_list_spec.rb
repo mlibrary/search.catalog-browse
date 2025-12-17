@@ -41,12 +41,10 @@ describe AuthorList do
 end
 describe AuthorList::Error do
   before(:each) do
-    @params = {
-      original_reference: "OSU"
-    }
+    @param = "INVALID QUERY"
   end
   subject do
-    described_class.new(**@params)
+    described_class.new(@param)
   end
   context "#error?" do
     it "returns true" do
@@ -55,7 +53,7 @@ describe AuthorList::Error do
   end
   context "#error_message" do
     it "returns an error message" do
-      expect(subject.error_message).to eq("<span class=\"strong\">{:original_reference=>\"OSU\"}</span> is not a valid author query.")
+      expect(subject.error_message).to eq("<span class=\"strong\">INVALID QUERY</span> is not a valid author query.")
     end
   end
 end
