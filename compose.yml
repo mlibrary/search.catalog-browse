@@ -5,7 +5,7 @@ services:
       target: development
     ports:
       - "4567:4567"
-      - "9394:9394"
+      - "9100:9100"
     volumes:
       - .:/app
       - gem_cache:/gems

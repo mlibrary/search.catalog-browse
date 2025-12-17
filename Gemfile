@@ -4,12 +4,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem "sinatra"
 gem "puma"
 gem "faraday"
-gem "yabeda-puma-plugin"
-gem "yabeda-prometheus"
 gem "canister"
 gem "rackup"
 gem "semantic_logger"
 gem "sinatra-contrib"
+
+group :metrics do
+  gem "yabeda-puma-plugin"
+  gem "yabeda-prometheus"
+  gem "prometheus-client"
+end
 
 group :development do
   gem "listen"
