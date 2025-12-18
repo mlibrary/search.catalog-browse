@@ -5,9 +5,10 @@ gem "sinatra"
 gem "puma"
 gem "faraday"
 gem "canister"
-gem "rackup"
 gem "semantic_logger"
 gem "sinatra-contrib"
+gem "ostruct"
+gem "benchmark"
 
 group :metrics do
   gem "yabeda-puma-plugin"
