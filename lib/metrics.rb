@@ -18,6 +18,18 @@ module Metrics::Yabeda
         unit :seconds
         buckets [0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5, 10, 15, 20, 30]
       end
+      histogram :catalog_solr_duration do
+        comment "The HTTP response duration of requests to catalog solr for catalog records"
+        tags [:kind]
+        unit :seconds
+        buckets [0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5, 10, 15, 20, 30]
+      end
+      histogram :browse_solr_duration do
+        comment "The HTTP response duration of requests to catalog solr for catalog records"
+        tags [:kind]
+        unit :seconds
+        buckets [0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5, 10, 15, 20, 30]
+      end
     end
 
     Yabeda.configure!
