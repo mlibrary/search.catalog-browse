@@ -2,6 +2,8 @@ require "sinatra"
 require "sinatra/reloader" if development?
 require "sinatra/custom_logger"
 require "byebug" if development?
+require_relative "lib/metrics"
+Metrics::Yabeda.configure!
 
 require "yaml"
 require "ostruct"
@@ -30,6 +32,7 @@ CatalogSolrClient.configure do |config|
 end
 
 get "/subject" do
+  headers "metrics.route" => "subject"
   subject = StringCleaner.clean_browse_string(params[:query])
   reference_id = params[:reference_id] || subject
   begin
@@ -42,6 +45,7 @@ get "/subject" do
 end
 
 get "/author" do
+  headers "metrics.route" => "author"
   author = StringCleaner.clean_browse_string(params[:query])
   reference_id = params[:reference_id] || author
   begin
@@ -53,6 +57,7 @@ get "/author" do
   erb :authors, locals: {list: list}
 end
 get "/callnumber" do
+  headers "metrics.route" => "call_number"
   call_number = params[:query]
   reference_id = params[:reference_id] || call_number
   begin
@@ -65,6 +70,7 @@ get "/callnumber" do
 end
 
 get "/carousel" do
+  headers "metrics.route" => "carousel"
   call_number = params[:query]
   begin
     content_type :json

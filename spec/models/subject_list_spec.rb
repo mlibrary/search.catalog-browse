@@ -48,12 +48,10 @@ describe SubjectList do
 end
 describe SubjectList::Error do
   before(:each) do
-    @params = {
-      original_reference: "Invalid Subject"
-    }
+    @param = "Invalid Subject"
   end
   subject do
-    described_class.new(**@params)
+    described_class.new(@param)
   end
   context "#show_table?" do
     it "returns false" do
@@ -67,7 +65,7 @@ describe SubjectList::Error do
   end
   context "#error_message" do
     it "returns an error message" do
-      expect(subject.error_message).to eq("<span class=\"strong\">{:original_reference=>\"Invalid Subject\"}</span> is not a valid subject query.")
+      expect(subject.error_message).to eq("<span class=\"strong\">Invalid Subject</span> is not a valid subject query.")
     end
   end
 end
