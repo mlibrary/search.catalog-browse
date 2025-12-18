@@ -14,8 +14,12 @@ module CatalogSolrClient
     def get_bibs(bib_ids:, core: "biblio")
       query = {
         q: "id:(#{bib_ids.join(" OR ")})",
-        rows: bib_ids.size
+        rows: bib_ids.size,
+        fl: ["id", "callnumber", "title_display", "main_author_display",
+          "publisher_display", "series_statement", "edition", "isbn", "issn",
+          "oclc", "display_date"].join(",")
       }
+
       @conn.public_send(:get, "#{@path_prefix}/select", query)
     end
   end
