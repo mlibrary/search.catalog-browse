@@ -26,7 +26,7 @@ RUN mkdir -p /gems && chown ${UID}:${GID} /gems
 
 USER $UNAME
 
-ENV BUNDLE_PATH /gems
+ENV BUNDLE_PATH=/gems
 
 WORKDIR /app
 
@@ -36,7 +36,7 @@ CMD ["bundle", "exec", "puma", "-b", "tcp://0.0.0.0:4567"]
 
 FROM development AS production
 
-ENV BUNDLE_WITHOUT development:test
+ENV BUNDLE_WITHOUT=development:test
 
 COPY --chown=${UID}:${GID} . /app
 
