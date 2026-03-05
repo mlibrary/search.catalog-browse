@@ -101,7 +101,7 @@ class BrowseList::ReferenceOnTop < BrowseList
   end
 
   def next_reference_id
-    @index_docs[@index_docs.count - 2]["id"].strip if has_next_list?
+    @index_docs[-2]["id"].strip if has_next_list?
   end
 
   def previous_reference_id
