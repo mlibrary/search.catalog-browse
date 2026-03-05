@@ -27,6 +27,7 @@ GEM
       logger
     faraday-net_http (3.4.2)
       net-http (~> 0.5)
+    ffi (1.17.3-aarch64-linux-gnu)
     ffi (1.17.3-x86_64-linux-gnu)
     hashdiff (1.2.1)
     io-console (0.8.2)
@@ -172,6 +173,7 @@ GEM
       yabeda (~> 0.5)
 
 PLATFORMS
+  aarch64-linux
   x86_64-linux
 
 DEPENDENCIES
