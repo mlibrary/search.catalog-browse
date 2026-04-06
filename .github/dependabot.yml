@@ -1,5 +1,4 @@
 version: 2
-
 multi-ecosystem-groups:
   app-dependencies:
     schedule:
@@ -9,7 +8,6 @@ multi-ecosystem-groups:
       timezone: "America/Detroit"
     commit-message:
       prefix: "Monthly dependency updates: "
-
   container-updates:
     schedule:
       interval: "cron"
@@ -17,32 +15,27 @@ multi-ecosystem-groups:
       timezone: "America/Detroit"
     commit-message:
       prefix: "Annual container update: "
-
 updates:
   # For npm/JavaScript dependencies
   - package-ecosystem: "npm"
     directory: "/"
     multi-ecosystem-group: "app-dependencies"
     patterns: ["*"]
-
   # For GitHub Actions updates
   - package-ecosystem: "github-actions"
     directory: "/"
     multi-ecosystem-group: "app-dependencies"
     patterns: ["*"]
-
   # For Bundler/Ruby
   - package-ecosystem: "bundler"
     directory: "/"
     multi-ecosystem-group: "app-dependencies"
     patterns: ["*"]
-
   # For Docker
   - package-ecosystem: "docker"
     directory: "/"
     multi-ecosystem-group: "container-updates"
     patterns: ["*"]
-
   # For Docker Compose
   - package-ecosystem: "docker-compose"
     directory: "/"
