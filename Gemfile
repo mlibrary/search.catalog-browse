@@ -12,7 +12,7 @@ gem "benchmark"
 
 group :metrics do
   gem "yabeda-puma-plugin"
-  gem "yabeda-prometheus"
+  gem "yabeda-prometheus", ">= 0.9.1"
   gem "prometheus-client"
 end
 
